@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+from account.models import UserAccount
 
 
 class Stocks(models.Model):
@@ -13,7 +16,7 @@ class PriceHistory(models.Model):
     stock_name = models.ForeignKey(Stocks, on_delete=models.CASCADE)
     price_current = models.DecimalField(max_digits=12, decimal_places=2)
     price_open = models.DecimalField(max_digits=12, decimal_places=2)
-    price_close = models.DecimalField(max_digits=12, decimal_places=2)
+    previous_close = models.DecimalField(max_digits=12, decimal_places=2)
     price_high = models.DecimalField(max_digits=12, decimal_places=2)
     price_low = models.DecimalField(max_digits=12, decimal_places=2)
 
@@ -30,3 +33,8 @@ class PredictionModel(models.Model):
     predicted_price_high = models.DecimalField(max_digits=12, decimal_places=2)
     predicted_price_low = models.DecimalField(max_digits=12, decimal_places=2)
     predicted_volume = models.DecimalField(max_digits=12, decimal_places=2)
+
+
+class Watchlist(models.Model):
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, default='')
+    stock = models.ForeignKey(PriceHistory, on_delete=models.CASCADE)
