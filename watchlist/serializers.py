@@ -10,18 +10,18 @@ class StocksSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
-class PriceHistory(serializers.ModelSerializer):
+class PriceHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PriceHistory
         fields = '__all__'
 
 
-class Watchlist(serializers.ModelSerializer):
+class WatchlistSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Watchlist
         fields = '__all__'
 
-        
+
 

@@ -13,7 +13,8 @@ class Stocks(models.Model):
 
 
 class PriceHistory(models.Model):
-    stock_name = models.ForeignKey(Stocks, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64)
+    ticker = models.CharField(max_length=64)
     price_current = models.DecimalField(max_digits=12, decimal_places=2)
     price_open = models.DecimalField(max_digits=12, decimal_places=2)
     previous_close = models.DecimalField(max_digits=12, decimal_places=2)
@@ -21,7 +22,7 @@ class PriceHistory(models.Model):
     price_low = models.DecimalField(max_digits=12, decimal_places=2)
 
     def __str__(self):
-        return f'{self.stock_name}'
+        return f'{self.ticker}, {self.name}'
 
 
 class PredictionModel(models.Model):
