@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import StockListView, StocksDetailView
 
+from .views import (PriceHistoryDetailView, PriceHistoryListView,
+                    StockListView, StocksDetailView)
 
 urlpatterns = [
-    path('', StockListView.as_view()),
-    path('api/watchlist/<pk>', StocksDetailView.as_view()),
+    path('stock/', PriceHistoryListView.as_view()),
+    path('stock/<int:pk>', PriceHistoryDetailView.as_view()),
 
 ]
